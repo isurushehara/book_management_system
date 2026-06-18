@@ -1,7 +1,11 @@
 <?php
 
-require "config/database.php";
+require_once __DIR__ . '/config/database.php';
 
-echo "<h2>Book Management System</h2>";
+if (!empty($_SESSION['user_id'])) {
+    header('Location: ' . APP_BASE . '/dashboard.php');
+    exit;
+}
 
-echo "Database connected successfully!";
+header('Location: ' . APP_BASE . '/auth/login.php');
+exit;
